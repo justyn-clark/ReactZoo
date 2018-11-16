@@ -1,0 +1,32 @@
+header {
+  padding-top: 3rem;
+  h1 {
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 4rem;
+    letter-spacing: -5px;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 1.4;
+    text-shadow: 0 3px 2px #5ba93b;
+    @media (#{$bp-larger-than-tablet}) {
+      font-size: 7rem;
+    }
+  }
+  h2 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400
+  }
+}
+
+.header__nav {
+  margin: 0 0 0.5em 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  @media (#{$bp-larger-than-tablet}) {
+    padding: 2rem 10rem;
+  }
+  a {
+    border-bottom: 1px solid black;
+  }
+}

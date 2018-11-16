@@ -1,0 +1,39 @@
+.container {
+  max-width: 80%;
+  margin: 0 auto 5rem;
+  text-align: center;
+  @media (#{$bp-larger-than-tablet}) {
+    max-width: 45rem;
+  }
+}
+
+.container__list {
+  text-align: left;
+  p {
+    padding-bottom: .5rem;
+    span {
+      font-weight: bold;
+    }
+  }
+  .item {
+    margin-bottom: 1.5rem;
+    background-color: #eeeeeee0;
+    padding: 3rem;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid #80808000;
+  }
+  .name {
+    font-size: 2rem;
+    font-weight: bold;
+    padding-bottom: 1rem;
+  }
+}
+
+.container__box {
+  background-color: $light;
+  width: 300px;
+  height: 200px;
+  border: 1px solid $blue;
+  padding: 15px;
+  margin: 15px auto;
+}

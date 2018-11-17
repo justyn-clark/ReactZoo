@@ -6,7 +6,7 @@ Source: [github.com/justyn-clark/ReactZoo](https://github.com/justyn-clark/React
 
 Author: [Justyn Clark](http://justynclark.com)
 
-Production: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
+Production: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/) (fully responsive for desktop and mobile)
 
 ## Run the site
 
@@ -32,16 +32,12 @@ This will run the automated build process, start up a webserver, and open the ap
 
 These are some of the main features and modern technologies used:
 * Webpack build for auto-compilation and auto-minification of CSS and JavaScript files for production
-* React
+* React with the lates JavaScript ES6/7/8 features
 * BEM - Block Element Modifier method as style convention for CSS naming  
-* ES6 
 * Flexbox display for page layouts
 * HTML5 framework and HTML5 semantics
 * Baseline HTML5 features, DNS prefetching, responsive meta
 * Encourages one-file CSS/JS in the view (HTML) for performance
-* Includes .editorconfig for consistent coding styles in IDEs
-* Standard .gitignore to ignore minified files and standard ignorables such as .DS_Store
-* JSHint .jshintrc file for configuring JavaScript linting
 * Extremely lightweight footprint
 
 ## Project Structure

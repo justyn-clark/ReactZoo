@@ -21,7 +21,7 @@ This will run the automated build process, start up a webserver, and open the ap
 
 These are some of the main features and modern technologies used:
 * Webpack build for auto-compilation and auto-minification of CSS and JavaScript files for production
-* React with the lates JavaScript ES6/7/8 features
+* React with the latest JavaScript ES6/7/8 features
 * BEM - Block Element Modifier method as style convention for CSS naming  
 * Flexbox display for page layouts
 * HTML5 framework and HTML5 semantics

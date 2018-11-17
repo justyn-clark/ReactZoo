@@ -10,12 +10,12 @@ Homepage: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
 
 ## Form Features
 
-* Text (Name)   
-* Select (Species)   
-* Date (Entry Date)   
+* Text (Name)  
+* Select (Species)  
+* Date (Entry Date)
 * Checkbox for text w/ money validation (Maintenance Cost)    
 * Ability to reset and clear form.
-* Placeholders 
+* Placeholders
 * Redux CRUD for one entity
 * No UI kit. All custom styling
 
@@ -30,15 +30,14 @@ This will run the automated build process, start up a webserver, and open the ap
 ## Modern Front-end Features
 
 These are some of the main features and modern technologies used:
-* Built-in npm build scripts for auto-compilation and auto-minification of CSS and JavaScript files for production
+* Webpack build for auto-compilation and auto-minification of CSS and JavaScript files for production
+* React
 * BEM - Block Element Modifier method as style convention for CSS naming  
-* ES6 Module Pattern setup with Browerify module bundling
-* ES6 newest features including: fetch and promises, etc...     
-* CSS Grid display for page layouts
+* ES6 
+* Flexbox display for page layouts
 * HTML5 framework and HTML5 semantics
 * Baseline HTML5 features, DNS prefetching, responsive meta
 * Encourages one-file CSS/JS in the view (HTML) for performance
-* Browsersync live reloading the browser upon changes
 * Includes .editorconfig for consistent coding styles in IDEs
 * Standard .gitignore to ignore minified files and standard ignorables such as .DS_Store
 * JSHint .jshintrc file for configuring JavaScript linting
@@ -46,36 +45,49 @@ These are some of the main features and modern technologies used:
 
 ## Project Structure
 
-````
-├── app
-│   ├── img
-│   ├── js
-|   |   └── eventemitter2.js
-│   ├── app.css
-|   ├── bundle.js
-│   |   ├── bundle.min.js
-│   |   └── bundle.min.js.map
-|   └── scripts.js
-|       ├── scripts.min.js
-│       └── scripts.min.js.map
-├── src
-│   └── js
-│   │   ├── modules
-│   │   └── scripts
-│   ├── app.js
-│   └── scss
-│       ├── base
-│       ├── mixins
-│       ├── modules
-│       ├── partials
-│       └── style.scss
-├── .babelrc
-├── .editoronfig
-├── .gitignore
-├── favicon.ico
-├── index.html
-├── package.json
-├── package-lock.json
-├── README.md
-└── .jshintrc
-````
+```
+ |-- .babelrc
+ |-- .gitignore
+ |-- README.md
+ |-- package.json
+ |-- webpack.config.js
+ |-- yarn.lock
+ |-- public
+ |   |-- bundle.js
+ |   |-- index.html
+ |-- src
+     |-- app.js
+     |-- directoryList.md
+     |-- actions
+     |   |-- animals.js
+     |   |-- filters.js
+     |-- components
+     |   |-- AddAnimal.js
+     |   |-- Animal.js
+     |   |-- AnimalFilter.js
+     |   |-- AnimalForm.js
+     |   |-- AnimalList.js
+     |   |-- Animals.js
+     |   |-- EditAnimal.js
+     |   |-- Header.js
+     |   |-- NotFound.js
+     |-- reducers
+     |   |-- animals.js
+     |   |-- filters.js
+     |-- routers
+     |   |-- AppRouter.js
+     |-- selectors
+     |   |-- animals.js
+     |-- store
+     |   |-- store.js
+     |-- styles
+         |-- styles.scss
+         |-- base
+         |   |-- base.scss
+         |   |-- settings.scss
+         |-- components
+             |-- buttons.scss
+             |-- container.scss
+             |-- form.scss
+             |-- header.scss
+```

@@ -13,9 +13,21 @@ Production: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/) (fully respon
 1. **Clone the project**. `git clone https://github.com/justyn-clark/ReactZoo.git`
 2. **Install local dependancies**. run `[sudo] yarn install` (first time users)
 3. **Run the project**. `yarn serve`
-This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files
+This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this project, this command will continue watching all your files
 
-*ReduxDevTools are installed so you can view the Redux Store, State and Actions in your browser on LIVE on Production
+*ReduxDevTools are installed so you can view the Redux Store, State and Actions in your browser LIVE on Production
+
+## Application Tech Features
+
+These are some of the main features and modern technologies used:
+* Webpack build for auto-compilation and auto-minification of CSS and JavaScript files for production
+* React with the lates JavaScript ES6/7/8 features
+* BEM - Block Element Modifier method as style convention for CSS naming  
+* Flexbox display for page layouts
+* HTML5 framework and HTML5 semantics
+* Baseline HTML5 features, DNS prefetching, responsive meta
+* Encourages one-file CSS/JS in the view (HTML) for performance
+* Extremely lightweight footprint
 
 ## Form Features
 
@@ -27,18 +39,6 @@ This will run the automated build process, start up a webserver, and open the ap
 * Placeholders
 * Redux CRUD for one entity
 * No UI kit. All custom styling
-
-## Modern Front-end Features
-
-These are some of the main features and modern technologies used:
-* Webpack build for auto-compilation and auto-minification of CSS and JavaScript files for production
-* React with the lates JavaScript ES6/7/8 features
-* BEM - Block Element Modifier method as style convention for CSS naming  
-* Flexbox display for page layouts
-* HTML5 framework and HTML5 semantics
-* Baseline HTML5 features, DNS prefetching, responsive meta
-* Encourages one-file CSS/JS in the view (HTML) for performance
-* Extremely lightweight footprint
 
 ## Project Structure
 

@@ -15,7 +15,7 @@ Production: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/) (fully respon
 3. **Run the project**. `yarn serve`
 This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files
 
-*ReduxDevTools are installed you can view Store, State and Actions in your browser on Production
+*ReduxDevTools are installed so you can view the Redux Store, State and Actions in your browser on LIVE on Production
 
 ## Form Features
 

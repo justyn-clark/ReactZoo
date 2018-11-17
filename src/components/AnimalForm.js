@@ -77,12 +77,10 @@ export default class AnimalForm extends Component {
       isEmpty: !input.value.trim(),
       isDisabled: modifiers.disabled === true
     })
-    console.log(`${formatDate(selectedDay)}`)
   }
 
   handelSpeciesChange = (species) => {
     this.setState({species: species.value})
-    console.log(`Option selected:`, species.value)
   }
 
   handleNameChange = (e) => {

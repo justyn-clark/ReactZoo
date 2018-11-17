@@ -38,6 +38,7 @@
   -webkit-transition:0.3s ease all;
   -o-transition:0.3s ease all;
   transition:0.3s ease all;
+  background-color: white;
   @media (#{$bp-larger-than-tablet}) {
     margin-right: 1rem;
     width: 10rem;

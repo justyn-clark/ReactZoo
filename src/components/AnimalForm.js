@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
-import moment from "moment"
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-
-import { formatDate, parseDate } from 'react-day-picker/moment';
+import DayPickerInput from 'react-day-picker/DayPickerInput'
+import 'react-day-picker/lib/style.css'
+import { formatDate, parseDate } from 'react-day-picker/moment'
 
 const options = [
   { value: 'chimpanzee', label: 'Chimpanzee' },
@@ -21,9 +19,10 @@ const colorStyles = {
     border: 'none',
     height: '45px',
     color: 'black',
+    marginBottom: '1em',
     boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1)'
   }),
-  input: styles => ({ ...styles, boxShadow: 'none', height: '45px', width: '0' }),
+  input: styles => ({ ...styles, boxShadow: 'none', height: '45px', width: '0'}),
   placeholder: styles => ({ ...styles, color: 'grey', fontWeight:'300' }),
   select: styles => ({ ...styles, border: 'black' }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
@@ -45,29 +44,27 @@ const colorStyles = {
 export default class AnimalForm extends Component {
   constructor(props) {
     super(props)
-
     this.state = {
       name: props.animal ? props.animal.name : '',
       species: props.animal ? props.animal.species : '',
       description: props.animal ? props.animal.description : '',
       date: props.animal ? props.animal.date : 0,
       error: '',
+      nameError: '',
+      speciesError: '',
+      dateError: '',
       selectedDay: undefined,
       isEmpty: true,
       isDisabled: false,
       isBigger: false,
     }
-
     this.baseState = this.state
   }
-
-
 
   handleInputChange = (event) => {
     const target = event.target
     const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
-
     this.setState({
       [name]: value
     })
@@ -100,10 +97,20 @@ export default class AnimalForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.name || !this.state.selectedDay) {
-      this.setState(() => ({ error: 'Please set name & species & date!' }))
+    if (!this.state.name || !this.state.speciesError || !this.state.selectedDay) {
+      this.setState(() => ({
+        error: 'Please fill out all fields',
+        nameError: 'Please fill in name',
+        speciesError: 'Please select Species',
+        dateError: 'Please select a date'
+      }))
     } else {
-      this.setState(() => ({ error: '' }))
+      this.setState(() => ({
+        error: '',
+        nameError: '',
+        speciesError: '',
+        dateError: ''
+      }))
       this.props.handleSubmitAnimal({
         name: this.state.name,
         species: this.state.species,
@@ -120,7 +127,6 @@ export default class AnimalForm extends Component {
   render() {
     return (
       <div>
-        {this.state.error && <p className='error'>{this.state.error}</p>}
         <form onSubmit={this.handleSubmit} className='add-animal-form'>
           <input className={'name'}
                  type="text"
@@ -128,6 +134,7 @@ export default class AnimalForm extends Component {
                  autoFocus
                  value={this.state.name}
                  onChange={this.handleNameChange} />
+          {this.state.nameError && !this.state.name && <p className='error'>{this.state.nameError}</p>}
           <Select
             value={this.state.species.value}
             onChange={this.handelSpeciesChange}
@@ -145,18 +152,17 @@ export default class AnimalForm extends Component {
               },
             })}
           />
-          <p className={'date-validation'}>
-            {/*{this.state.isEmpty && 'Please type or pick a day'}*/}
+          {this.state.speciesError && !this.state.species && <p className='error'>{this.state.speciesError}</p>}
+          <p className={'error'}>
             {!this.state.isEmpty && !this.state.selectedDay && 'This day is invalid'}
             {this.state.selectedDay && this.state.isDisabled && 'This day is disabled'}
-            {/*{this.state.selectedDay && !this.state.isDisabled && `You chose ${this.state.selectedDay.toLocaleDateString()}`}*/}
           </p>
           <DayPickerInput
             value={this.state.selectedDay}
             onDayChange={this.handleDayChange}
             formatDate={formatDate}
             parseDate={parseDate}
-            placeholder={`Type MM/DD/YYYY or Pick Date` /*`${formatDate(new Date())}`*/}
+            placeholder={`Type MM/DD/YYYY or Pick Date`}
             dayPickerProps={{
               selectedDays: this.state.selectedDay,
               disabledDays: {
@@ -164,16 +170,19 @@ export default class AnimalForm extends Component {
               },
             }}
           />
-          <label>
+          {this.state.dateError && !this.state.selectedDay && <p className='error'>{this.state.dateError}</p>}
+          <label className="chk-wrap">
             Bigger than a breadbox?:
             <input
               name="isBigger"
               type="checkbox"
               checked={this.state.isBigger}
               onChange={this.handleInputChange} />
+            <span className="checkmark"></span>
           </label>
-          <p className={'date-validation'}>
-            {this.state.isBigger && 'You need to pay extra foo!'}
+
+          <p className={'maintenance'}>
+            {this.state.isBigger && `Maintenance Cost: $${20}` }
           </p>
           <textarea className={'desc'}
                     placeholder="Description"
@@ -181,7 +190,7 @@ export default class AnimalForm extends Component {
                     onChange={this.handleDescriptionChange} />
           <div className={'add-btn-wrap'}>
             <button
-              className={`btn`}>Add</button>
+              className={`btn add`}>Add</button>
             <button
               className={`btn`}
               onClick={this.handelResetForm}

@@ -14,9 +14,6 @@ npm-debug.log
 /node_modules/
 /coverage/
 
-## Bower
-src/components
-
 ## Sass
 .sass-cache
 

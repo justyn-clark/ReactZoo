@@ -6,14 +6,16 @@ Source: [github.com/justyn-clark/ReactZoo](https://github.com/justyn-clark/React
 
 Author: [Justyn Clark](http://justynclark.com)
 
-Homepage: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
+Production: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
 
 ## Run the site
 
-1. **Clone the project**. `git clone https://github.com/justyn-clark/ReactZoo.git`.
+1. **Clone the project**. `git clone https://github.com/justyn-clark/ReactZoo.git`
 2. **Install local dependancies**. run `[sudo] yarn install` (first time users)
-3. **Run the project**. `yarn start`
-This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files.
+3. **Run the project**. `yarn serve`
+This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files
+
+*ReduxDevTools are installed you can view Store, State and Actions in your browser on Production
 
 ## Form Features
 
@@ -21,7 +23,7 @@ This will run the automated build process, start up a webserver, and open the ap
 * Select (Species)  
 * Date (Entry Date)
 * Checkbox for text w/ money validation (Maintenance Cost)    
-* Ability to reset and clear form.
+* Ability to reset and clear form
 * Placeholders
 * Redux CRUD for one entity
 * No UI kit. All custom styling

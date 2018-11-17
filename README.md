@@ -8,6 +8,13 @@ Author: [Justyn Clark](http://justynclark.com)
 
 Homepage: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
 
+## Run the site
+
+1. **Clone the project**. `git clone https://github.com/justyn-clark/ReactZoo.git`.
+2. **Install local dependancies**. run `[sudo] yarn install` (first time users)
+3. **Run the project**. `yarn start`
+This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files.
+
 ## Form Features
 
 * Text (Name)  
@@ -18,14 +25,6 @@ Homepage: [http://reactzoo.surge.sh/](http://reactzoo.surge.sh/)
 * Placeholders
 * Redux CRUD for one entity
 * No UI kit. All custom styling
-
-## Run the site
-
-1. **Clone the project**. `git clone https://github.com/justyn-clark/ReactZoo.git`.
-2. **Install local dependancies**. run `[sudo] yarn install` (first time users)
-3. **Run the project**. `yarn start`
-This will run the automated build process, start up a webserver, and open the application in your default browser. When doing development with this kit, this command will continue watching all your files.
-
 
 ## Modern Front-end Features
 
@@ -57,7 +56,6 @@ These are some of the main features and modern technologies used:
  |   |-- index.html
  |-- src
      |-- app.js
-     |-- directoryList.md
      |-- actions
      |   |-- animals.js
      |   |-- filters.js

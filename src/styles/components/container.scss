@@ -1,5 +1,5 @@
 .container {
-  max-width: 80%;
+  max-width: 85%;
   margin: 0 auto 5rem;
   text-align: center;
   @media (#{$bp-larger-than-tablet}) {
@@ -17,7 +17,7 @@
   }
   .item {
     margin-bottom: 1.5rem;
-    background-color: #eeeeeee0;
+    background-color: #eeeeee99;
     padding: 3rem;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
     border: 1px solid #80808000;

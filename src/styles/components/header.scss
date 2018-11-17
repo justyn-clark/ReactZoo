@@ -1,8 +1,8 @@
 header {
-  padding-top: 3rem;
+  padding-top: 1rem;
   h1 {
     font-family: 'Gloria Hallelujah', cursive;
-    font-size: 4rem;
+    font-size: 3rem;
     letter-spacing: -5px;
     margin: 0;
     text-transform: uppercase;
@@ -14,7 +14,11 @@ header {
   }
   h2 {
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400
+    font-weight: 400;
+    font-size: 1.1rem;
+    @media (#{$bp-larger-than-tablet}) {
+      font-size: 2.3rem;
+    }
   }
 }
 

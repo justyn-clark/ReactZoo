@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Animal from './Animal'
-import getVisibleAnimals from '../selectors/animals'
 
 const AnimalList = (props) => (
     <div>
@@ -19,7 +18,7 @@ const AnimalList = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        animals: getVisibleAnimals(state.animals, state.filters)
+        animals: state.animals
     }
 }
 

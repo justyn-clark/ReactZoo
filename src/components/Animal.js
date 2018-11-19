@@ -15,9 +15,7 @@ const Animal = ({ id, name, date, cost, description, species,  dispatch }) => (
       <button className={`btn`} onClick={() => {
         dispatch(removeAnimal({ id }))
       }}>Remove</button>
-      <button className={`btn`}>
-        <Link to={`/animal/${id}`}>Edit</Link>
-      </button>
+    <Link className={`btn`} to={`/animal/${id}`}>Edit</Link>
     </div>
   </div>
 )

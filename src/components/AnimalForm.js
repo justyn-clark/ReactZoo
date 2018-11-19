@@ -57,6 +57,7 @@ export default class AnimalForm extends Component {
       species: props.animal ? props.animal.species : '',
       date: props.animal ? props.animal.date : 0,
       cost: props.animal ? props.animal.cost : '',
+      isBigger: props.animal ? props.animal.isBigger : '',
       description: props.animal ? props.animal.description : '',
       error: '',
       nameError: '',
@@ -65,7 +66,6 @@ export default class AnimalForm extends Component {
       selectedDay: undefined,
       isEmpty: true,
       isDisabled: false,
-      isBigger: false,
       invalid: false,
       displayErrors: false,
     }
@@ -137,6 +137,7 @@ export default class AnimalForm extends Component {
         species: this.state.species,
         date: `${formatDate(this.state.selectedDay)}`,
         cost: this.state.cost,
+        isBigger: this.state.isBigger,
         description: this.state.description,
       })
     }
@@ -240,6 +241,7 @@ export default class AnimalForm extends Component {
             <MaskedInput
               mask={numberMask}
               className='name'
+              value={this.state.cost}
               name='cost'
               placeholder='Enter maintenance cost'
               guide={true}

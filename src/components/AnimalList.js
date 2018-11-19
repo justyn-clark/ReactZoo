@@ -7,11 +7,11 @@ const AnimalList = (props) => (
         <ul>
             {props.animals.map(animal => {
                 return (
-                    <li className={`item`} key={animal.id}>
+                    <li className='item' key={animal.id}>
                         <Animal {...animal} />
                     </li>
                 )
-            })}
+            }).reverse()}
         </ul>
     </div>
 )

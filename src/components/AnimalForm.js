@@ -55,7 +55,7 @@ export default class AnimalForm extends Component {
       name: props.animal ? props.animal.name : '',
       species: props.animal ? props.animal.species : '',
       date: props.animal ? props.animal.date : 0,
-      cost: props.animal ? props.animal.cost : 0,
+      cost: props.animal ? props.animal.cost : '',
       description: props.animal ? props.animal.description : '',
       error: '',
       nameError: '',
@@ -65,6 +65,8 @@ export default class AnimalForm extends Component {
       isEmpty: true,
       isDisabled: false,
       isBigger: false,
+      invalid: false,
+      displayErrors: false,
     }
     this.baseState = this.state
   }
@@ -82,6 +84,7 @@ export default class AnimalForm extends Component {
     const input = dayPickerInput.getInput()
     this.setState({
       selectedDay,
+      date: `${formatDate(this.state.selectedDay)}`,
       isEmpty: !input.value.trim(),
       isDisabled: modifiers.disabled === true
     })
@@ -108,8 +111,10 @@ export default class AnimalForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    if (!this.state.name || !this.state.speciesError || !this.state.selectedDay) {
+    if (!e.target.checkValidity() || !this.state.name || !this.state.species || !this.state.date) {
       this.setState(() => ({
+        invalid: true,
+        displayErrors: true,
         error: 'Please fill out all fields',
         nameError: 'Please fill in name',
         speciesError: 'Please select Species',
@@ -117,6 +122,8 @@ export default class AnimalForm extends Component {
       }))
     } else {
       this.setState(() => ({
+        invalid: false,
+        displayErrors: false,
         error: '',
         nameError: '',
         speciesError: '',
@@ -137,15 +144,22 @@ export default class AnimalForm extends Component {
   }
 
   render() {
+    const { displayErrors } = this.state
     return (
       <div>
-        <form onSubmit={this.handleSubmit} className='add-animal-form'>
-          <input className={'name'}
-                 type="text"
-                 placeholder="Enter a name"
+        <form onSubmit={this.handleSubmit}
+              className={displayErrors ? 'displayErrors' : ''}
+              noValidate>
+          <input className='name'
+                 type='text'
+                 minLength='3'
+                 maxLength='16'
+                 size='21'
+                 placeholder='Enter name'
                  autoFocus
                  value={this.state.name}
-                 onChange={this.handleNameChange} />
+                 onChange={this.handleNameChange}
+                 required/>
           {this.state.nameError && !this.state.name && <p className='error'>{this.state.nameError}</p>}
           <Select
             value={this.state.species.value}
@@ -165,7 +179,7 @@ export default class AnimalForm extends Component {
             })}
           />
           {this.state.speciesError && !this.state.species && <p className='error'>{this.state.speciesError}</p>}
-          <p className={'error'}>
+          <p className='error'>
             {!this.state.isEmpty && !this.state.selectedDay && 'This day is invalid'}
             {this.state.selectedDay && this.state.isDisabled && 'This day is disabled'}
           </p>
@@ -182,38 +196,38 @@ export default class AnimalForm extends Component {
               },
             }}
           />
-          {this.state.dateError && !this.state.selectedDay && <p className='error'>{this.state.dateError}</p>}
-          <label className="chk-wrap">
+          {!this.state.date && !this.state.selectedDay && <p className='error'>{this.state.dateError}</p>}
+          <label className='chk-wrap'>
             Bigger than a breadbox?:
             <input
-              name="isBigger"
-              type="checkbox"
+              name='isBigger'
+              type='checkbox'
               checked={this.state.isBigger}
               onChange={this.handleInputChange} />
-            <span className="checkmark"></span>
+            <span className='checkmark'></span>
           </label>
-
-          <p className={'maintenance'}>
+          <p className='maintenance'>
             {this.state.isBigger &&
             <MaskedInput
               mask={numberMask}
-              className="name"
-              placeholder="Enter maintenance cost"
+              className='name'
+              placeholder='Enter maintenance cost'
               guide={true}
               onChange={this.handleCostChange}
             />}
           </p>
-          <textarea className={'desc'}
-                    placeholder="Description"
+          <textarea className='desc'
+                    placeholder='Description'
+                    maxLength='50'
                     value={this.state.description}
                     onChange={this.handleDescriptionChange} />
-          <div className={'add-btn-wrap'}>
+          <div className='add-btn-wrap'>
             <button
-              className={`btn add`}>Add</button>
+              className='btn add'>Add</button>
             <button
-              className={`btn`}
+              className='btn'
               onClick={this.handelResetForm}
-              type="button">Cancel</button>
+              type='button'>Cancel</button>
           </div>
         </form>
       </div>

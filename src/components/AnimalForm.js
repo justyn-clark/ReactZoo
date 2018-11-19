@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import Select from 'react-select'
 import DayPickerInput from 'react-day-picker/DayPickerInput'
-import 'react-day-picker/lib/style.css'
+import MaskedInput from 'react-text-mask'
 import { formatDate, parseDate } from 'react-day-picker/moment'
+import createNumberMask from 'text-mask-addons/dist/createNumberMask'
+import 'react-day-picker/lib/style.css'
 
 const options = [
   { value: 'chimpanzee', label: 'Chimpanzee' },
@@ -41,14 +43,20 @@ const colorStyles = {
   },
 }
 
+const numberMask = createNumberMask({
+  prefix: '$',
+  allowDecimal: true
+})
+
 export default class AnimalForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
       name: props.animal ? props.animal.name : '',
       species: props.animal ? props.animal.species : '',
-      description: props.animal ? props.animal.description : '',
       date: props.animal ? props.animal.date : 0,
+      cost: props.animal ? props.animal.cost : 0,
+      description: props.animal ? props.animal.description : '',
       error: '',
       nameError: '',
       speciesError: '',
@@ -61,8 +69,8 @@ export default class AnimalForm extends Component {
     this.baseState = this.state
   }
 
-  handleInputChange = (event) => {
-    const target = event.target
+  handleInputChange = (e) => {
+    const target = e.target
     const value = target.type === 'checkbox' ? target.checked : target.value
     const name = target.name
     this.setState({
@@ -86,6 +94,11 @@ export default class AnimalForm extends Component {
   handleNameChange = (e) => {
     const name = e.target.value
     this.setState(() => ({ name: name }))
+  }
+
+  handleCostChange = (e) => {
+    const cost = e.target.value
+    this.setState(() => ({ cost: cost }))
   }
 
   handleDescriptionChange = (e) => {
@@ -112,8 +125,9 @@ export default class AnimalForm extends Component {
       this.props.handleSubmitAnimal({
         name: this.state.name,
         species: this.state.species,
+        date: `${formatDate(this.state.selectedDay)}`,
+        cost: this.state.cost,
         description: this.state.description,
-        date: `${formatDate(this.state.selectedDay)}`
       })
     }
   }
@@ -128,7 +142,7 @@ export default class AnimalForm extends Component {
         <form onSubmit={this.handleSubmit} className='add-animal-form'>
           <input className={'name'}
                  type="text"
-                 placeholder="Name"
+                 placeholder="Enter a name"
                  autoFocus
                  value={this.state.name}
                  onChange={this.handleNameChange} />
@@ -138,7 +152,7 @@ export default class AnimalForm extends Component {
             onChange={this.handelSpeciesChange}
             options={options}
             styles={colorStyles}
-            placeholder={'Select Species'}
+            placeholder={'Select species'}
             theme={(theme) => ({
               ...theme,
               borderRadius: 0,
@@ -180,7 +194,14 @@ export default class AnimalForm extends Component {
           </label>
 
           <p className={'maintenance'}>
-            {this.state.isBigger && `Maintenance Cost: $${20}` }
+            {this.state.isBigger &&
+            <MaskedInput
+              mask={numberMask}
+              className="name"
+              placeholder="Enter maintenance cost"
+              guide={true}
+              onChange={this.handleCostChange}
+            />}
           </p>
           <textarea className={'desc'}
                     placeholder="Description"
@@ -194,7 +215,6 @@ export default class AnimalForm extends Component {
               onClick={this.handelResetForm}
               type="button">Cancel</button>
           </div>
-
         </form>
       </div>
     )

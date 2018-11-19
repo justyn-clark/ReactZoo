@@ -1,11 +1,12 @@
 import uuid from 'uuid'
 
-export const addAnimal = ({ name = '', description = '', species = '', date = 0} = {}) => ({
+export const addAnimal = ({ name = '', species = '', cost = '', description = '', date = 0} = {}) => ({
     type: 'ADD_ANIMAL',
     animal: {
         id: uuid(),
         name,
         species,
+        cost,
         description,
         date
     }

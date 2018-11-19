@@ -218,7 +218,7 @@ export default class AnimalForm extends Component {
           </p>
           <textarea className='desc'
                     placeholder='Description'
-                    maxLength='50'
+                    maxLength='500'
                     value={this.state.description}
                     onChange={this.handleDescriptionChange} />
           <div className='add-btn-wrap'>
@@ -227,7 +227,7 @@ export default class AnimalForm extends Component {
             <button
               className='btn'
               onClick={this.handelResetForm}
-              type='button'>Cancel</button>
+              type='button'>Reset</button>
           </div>
         </form>
       </div>

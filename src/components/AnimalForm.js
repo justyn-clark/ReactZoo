@@ -48,6 +48,7 @@ const numberMask = createNumberMask({
   allowDecimal: true
 })
 
+
 export default class AnimalForm extends Component {
   constructor(props) {
     super(props)
@@ -70,6 +71,8 @@ export default class AnimalForm extends Component {
     }
     this.baseState = this.state
   }
+
+
 
   handleInputChange = (e) => {
     const target = e.target
@@ -137,6 +140,29 @@ export default class AnimalForm extends Component {
         description: this.state.description,
       })
     }
+
+    const formElement = document.querySelector('form')
+    const formData = new FormData(formElement)
+
+    function stringifyFormData(fd) {
+      const data = {}
+      for (let key of fd.keys()) {
+        data[key] = fd.get(key)
+      }
+      return JSON.stringify(data, null, 2)
+    }
+
+    let jsonObject = {}
+    for (const [key, value]  of formData.entries()) {
+      jsonObject[key] = value
+    }
+
+    console.log(jsonObject)
+    console.log(`Data sent to the the sever is: ${stringifyFormData(formData)}`)
+
+    this.setState({
+      res: stringifyFormData(formData)
+    })
   }
 
   handelResetForm = () => {
@@ -151,6 +177,7 @@ export default class AnimalForm extends Component {
               className={displayErrors ? 'displayErrors' : ''}
               noValidate>
           <input className='name'
+                 name='name'
                  type='text'
                  minLength='3'
                  maxLength='16'
@@ -164,6 +191,7 @@ export default class AnimalForm extends Component {
           <Select
             value={this.state.species.value}
             onChange={this.handelSpeciesChange}
+            name='species'
             options={options}
             styles={colorStyles}
             placeholder={'Select species'}
@@ -188,6 +216,7 @@ export default class AnimalForm extends Component {
             onDayChange={this.handleDayChange}
             formatDate={formatDate}
             parseDate={parseDate}
+            name='date'
             placeholder={`Type MM/DD/YYYY or Pick Date`}
             dayPickerProps={{
               selectedDays: this.state.selectedDay,
@@ -211,6 +240,7 @@ export default class AnimalForm extends Component {
             <MaskedInput
               mask={numberMask}
               className='name'
+              name='cost'
               placeholder='Enter maintenance cost'
               guide={true}
               onChange={this.handleCostChange}
@@ -219,6 +249,7 @@ export default class AnimalForm extends Component {
           <textarea className='desc'
                     placeholder='Description'
                     maxLength='500'
+                    name='description'
                     value={this.state.description}
                     onChange={this.handleDescriptionChange} />
           <div className='add-btn-wrap'>

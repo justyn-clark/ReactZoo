@@ -35,9 +35,10 @@ These are some of the main features and modern technologies used:
 * Select (Species)  
 * Date (Entry Date)
 * Checkbox for text w/ money validation (Maintenance Cost)    
-* Ability to reset and clear form
+* Ability to reset/clear form
 * Placeholders
 * Redux CRUD for one entity
+* console.log of data saved when adding item 
 * No UI kit. All custom styling
 
 ## Project Structure
@@ -56,11 +57,9 @@ These are some of the main features and modern technologies used:
      |-- app.js
      |-- actions
      |   |-- animals.js
-     |   |-- filters.js
      |-- components
      |   |-- AddAnimal.js
      |   |-- Animal.js
-     |   |-- AnimalFilter.js
      |   |-- AnimalForm.js
      |   |-- AnimalList.js
      |   |-- Animals.js
@@ -73,7 +72,6 @@ These are some of the main features and modern technologies used:
      |-- routers
      |   |-- AppRouter.js
      |-- selectors
-     |   |-- animals.js
      |-- store
      |   |-- store.js
      |-- styles
